@@ -1,3 +1,4 @@
+
 //  Declaring Matter js variables
 const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 
@@ -13,17 +14,18 @@ const { world } = engine;
 //
 const cellsHorizontal = 14;
 const cellsVertical = 10;
-const width = window.innerWidth;
-const height = window.innerHeight;
+const width = window.innerWidth-20;
+const height = window.innerHeight-20;
 
 const unitLengthX = width / cellsHorizontal;
 const unitLengthY = height / cellsVertical;
 
 
-
+const mainDiv = document.createElement('div');
+mainDiv.classList.add('mainDiv');
 
 const render = Render.create({
-    element: document.body,
+    element: mainDiv,
     engine: engine,
     options: {
         wireframes: false,
@@ -55,8 +57,9 @@ const walls = [
         label: "border"
     }),
 ]
-
-World.add(world, walls);
+World.add(world, walls)
+// mainDiv.append();
+document.querySelector('body').append(mainDiv);
 
 // UTILS - shuffle function
 const shuffle = arr => {
